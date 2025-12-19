@@ -1,6 +1,6 @@
 # Efficient  Water  Desalination  with  Graphene  NanoporesObtained using Artificial Intelligence
 
-This is the Github repository for the paper *"Efficient  Water  Desalination  with  Graphene  NanoporesObtained using Artificial Intelligence"*. In this work, we propose a graphene nanopore optimization framework via the combination of DRL and CNN for efficient water desalination. The DRL agent controls the growth of nanopore, while the CNN is employed to predict the water flux and ion rejection of the nanoporous graphene membrane at a certain external pressure. Experiments show that our framework can design nanopore structures that are promising in energy-efficient water desalination.
+ The DRL agent controls the growth of nanopore, while the CNN is employed to predict the water flux and ion rejection of the nanoporous graphene membrane at a certain external pressure. Experiments show that our framework can design nanopore structures that are promising in energy-efficient water desalination.
 
 ## Prerequisites
 ---
