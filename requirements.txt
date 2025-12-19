@@ -1,0 +1,10 @@
+matplotlib
+numpy
+torch
+torchvision
+pillow
+gym
+rdkit
+ase
+xgboost
+networkx
