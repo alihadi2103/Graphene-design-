@@ -1,44 +1,202 @@
-# Efficient  Water  Desalination  with  Graphene  NanoporesObtained using Artificial Intelligence
+# Nano-Graphene: AI-Driven Nanopore Design for Water Desalination
 
- The DRL agent controls the growth of nanopore, while the CNN is employed to predict the water flux and ion rejection of the nanoporous graphene membrane at a certain external pressure. Experiments show that our framework can design nanopore structures that are promising in energy-efficient water desalination.
+\
 
-## Prerequisites
+## Overview
+
+**Nano-Graphene** is a research-focused project combining **deep reinforcement learning (DRL)** and **convolutional neural networks (CNNs)** to **design optimized graphene nanopores for water desalination**. The project aims to automate nanopore structure generation to maximize **water flux** while minimizing **ion rejection**, which is critical for effective desalination.
+
+This repository integrates content from the original project README, including pre-existing **usage instructions, dataset descriptions, and model files**.
+
+**Key Contributions:**
+
+* DRL for nanopore growth control
+* CNN-based property prediction
+* Multi-objective optimization for water flux and ion rejection
+* Dataset of nanopore geometries with corresponding performance metrics
+
 ---
-- Windows, Linux or macOS
-- Python 3
-- CPU or NVIDIA GPU + CUDA CuDNN
 
-## Getting Started
+## Scientific Intuition & Motivation
+
+Designing nanoporous graphene for desalination is challenging due to:
+
+* **Complex structure-property relationships**: Small changes in pore geometry drastically affect water and ion transport
+* **High-dimensional design space**: Millions of possible atomic configurations
+* **Experimental cost**: Synthesizing and testing nanopores is time-consuming and expensive
+
+**Our Approach:**
+
+* Use **CNNs** to predict key performance metrics (water flux and ion rejection) from nanopore geometries
+* Use **DRL agents** to propose structural modifications for optimal performance
+* Feedback loop ensures **iterative improvement** of nanopore designs without exhaustive experimentation
+
+**Benefits:**
+
+* Accelerates nanopore design
+* Reduces reliance on expensive simulations or experiments
+* Enables **multi-objective optimization** with automated trade-off management
+* Demonstrates the potential of AI-driven materials engineering
+
 ---
-### Installation
+
+## Technical Details
+
+### 1. CNN Model for Property Prediction
+
+* Input: Graphene nanopore structure (2D atomic map or 3D coordinates)
+* Output: Water flux and ion rejection metrics
+* Architecture: Convolutional layers extract spatial patterns, fully connected layers output predicted properties
+* Purpose: Provides **fast evaluation** of nanopore designs for DRL agent
+
+### 2. Deep Reinforcement Learning Agent
+
+* Controls **pore growth actions** (adding/removing atoms)
+* Reward function balances:
+
+  * Maximizing water flux
+  * Maximizing ion rejection
+  * Penalty for non-physical or unstable configurations
+* Policy: DRL optimizes sequential decisions for nanopore construction
+
+### 3. Workflow
+
+1. Initialize base graphene structure
+2. CNN predicts performance of initial pore
+3. DRL agent proposes modifications
+4. CNN evaluates new structure
+5. Reward is computed and agent updates policy
+6. Steps 3-5 repeat iteratively to improve nanopore design
+7. Optimized nanopore structures are saved for analysis and potential fabrication
+
+### 4. Dataset
+
+* Includes nanopore PDB files and performance CSVs (from the original README)
+* Used for CNN training and DRL evaluation
+* Contains geometric features and corresponding water/ion transport data
+
+### 5. Multi-Objective Optimization
+
+* DRL agent simultaneously optimizes water flux and ion rejection
+* Uses weighted reward function or Pareto-front approach
+* Enables trade-off exploration between throughput and selectivity
+
+---
+
+## Repository Structure
+
 ```
-$ git clone https://github.com/yuyangw/Graphene-RL-DQN.git
-$ cd Graphene-RL-DQN
-$ conda env create --name graphene-rl --file env.yml
-$ conda activate graphene-rl
+.
+├── data/                  # Nanopore geometries and performance CSVs
+├── models/                # CNN models for property prediction
+├── rl_agent/              # DRL agent implementation and training scripts
+├── utils/                 # Utilities for data preprocessing, visualization, and reward computation
+├── scripts/               # Training and evaluation scripts
+├── notebooks/             # Jupyter notebooks for analysis and experiments
+├── results/               # Saved optimized nanopore structures and metrics
+├── requirements.txt       # Python dependencies
+└── README.md              # This file (incorporates pre-existing README sections)
 ```
 
-### Train the CNN model
-```
-$ python cnn.py
+---
+
+## Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/alihadi2103/Nano-Graphene.git
+cd Nano-Graphene
 ```
 
-### Train the nanopore design DRL agent
+2. Create a virtual environment:
+
+```bash
+python -m venv venv
+source venv/bin/activate   # Linux/macOS
+venv\Scripts\activate      # Windows
 ```
-$ python main.py
+
+3. Install dependencies:
+
+```bash
+pip install -r requirements.txt
 ```
+
+> Note: PyTorch installation should match your system and CUDA version.
+
+---
+
+## Usage
+
+### 1. CNN Property Prediction
+
+```bash
+python cnn.py 
+
+```
+
+### 2. DRL Nanopore Optimization
+
+```bash
+python main.py 
+```
+
+## **Data**
+
+---
+
+The data used to train the CNN water desalination performance predictor is stored in the data folder. Data include the PDB files of each graphene nanopore and it's augmented variants, and a csv file that record their corresponding values of water flux and ion rejection rate. Images of nanopores can be generated by
+
+```
+pdb2img.py
+```
+
+### 3. Analysis & Visualization
+
+* Plot reward curves, water flux, and ion rejection
+* Visualize nanopore structures in 2D/3D
+* Compare DRL-optimized designs vs baseline or random generation
+
+---
+
+## Key Insights
+
+* DRL effectively **explores the nanopore design space**
+* CNN surrogate models **accelerate evaluation** of candidate structures
+* Multi-objective optimization balances **throughput vs selectivity**
+* Framework is **extensible** to other 2D materials and nanofluidic applications
 
 ## Results
+
 ---
+
 Here we show nanopore evolution controlled by the DRL agent
 
 <p float="left">
+
     <img src="figs/graphene_evolve.gif" width="240">
+
     <img src="figs/graphene_evolve2.gif" width="240">
+
 </p>
 
-## Data
+## Future Improvements
+
+* Integrate **graph neural networks** for better structural representation
+* Include **environmental and fabrication constraints** in reward design
+* Distributed DRL training for larger design spaces
+* Multi-agent DRL for cooperative multi-pore systems
+* Real-time molecular dynamics integration for feedback
+
 ---
-The data used to train the CNN water desalination performance predictor is stored in the data folder. Data include the PDB files of each graphene nanopore and it's augmented variants, and a csv file that record their corresponding values of water flux and ion rejection rate. Images of nanopores can be generated by
-```
-pdb2img.py
+
+## License
+
+[MIT License](LICENSE)
+
+---
+
+## Author
+
+Ali Hadi — [GitHub](https://github.com/alihadi2103)
