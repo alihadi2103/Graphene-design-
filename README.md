@@ -169,7 +169,6 @@ pdb2img.py
 
 ## Results
 
----
 
 Here we show nanopore evolution controlled by the DRL agent
 
