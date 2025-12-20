@@ -167,18 +167,7 @@ pdb2img.py
 * Multi-objective optimization balances **throughput vs selectivity**
 * Framework is **extensible** to other 2D materials and nanofluidic applications
 
-## Results
 
-
-Here we show nanopore evolution controlled by the DRL agent
-
-<p float="left">
-
-    <img src="figs/graphene_evolve.gif" width="240">
-
-    <img src="figs/graphene_evolve2.gif" width="240">
-
-</p>
 
 ## Future Improvements
 
