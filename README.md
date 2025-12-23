@@ -179,9 +179,6 @@ pdb2img.py
 
 ---
 
-## License
-
-[MIT License](LICENSE)
 
 ---
 
